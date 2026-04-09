@@ -3,13 +3,15 @@
 #  db-dump.sh — PostgreSQL database dump
 #  Reads connection details from .env
 #  Usage: bash scripts/db-dump.sh
+#         bash scripts/db-dump.sh apps/api/.env
 # ================================================================
 
-# Load .env from project root
-if [[ -f ".env" ]]; then
-  export $(grep -v '^#' .env | xargs)
+ENV_FILE="${1:-.env}"
+
+if [[ -f "$ENV_FILE" ]]; then
+  export $(grep -v '^#' "$ENV_FILE" | xargs)
 else
-  echo "❌  .env file not found. Run from the project root." >&2; exit 1
+  echo "❌  .env file not found: $ENV_FILE" >&2; exit 1
 fi
 
 DUMPS_DIR="dumps/db"
