@@ -4,7 +4,7 @@
 
 ## Features
 
-- **Auto Configuration:** Reads `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` and `DB_PORT` from `.env`.
+- **Auto Configuration:** Reads `DATABASE_URL` from `.env`.
 - **Flexible ENV Path:** Accepts a custom path to `.env` file as an argument.
 - **Timestamped Output:** Each dump file is named with the current date and time to avoid overwrites.
 - **Organized Storage:** Saves all dumps to `dumps/db/` directory.
@@ -30,13 +30,9 @@ Output: `dumps/db/backup-2026-04-09_14-30-00.sql`
 
 ## .env configuration
 
-The following variables must be present in your `.env` file:
+The following variable must be present in your `.env` file:
 ```
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=your_password
-DB_NAME=your_database
+DATABASE_URL=postgresql://postgres:your_password@localhost:5432/your_db
 ```
 
 ## Requirements
