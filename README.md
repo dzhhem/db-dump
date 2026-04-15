@@ -5,9 +5,10 @@
 ## Features
 
 - **Auto Configuration:** Reads `DATABASE_URL` from `.env`.
-- **Flexible ENV Path:** Accepts a custom path to `.env` file as an argument.
+- **Flexible ENV Path:** Accepts a custom path to `.env` file via `-e` / `--env` argument.
 - **Timestamped Output:** Each dump file is named with the current date and time to avoid overwrites.
 - **Organized Storage:** Saves all dumps to `dumps/db/` directory.
+- **Named Arguments:** Supports short (`-e`) and long (`--env`) flags.
 
 ## Usage
 
@@ -23,7 +24,7 @@ bash scripts/db-dump.sh
 
 ### Run with a custom `.env` path
 ```bash
-bash scripts/db-dump.sh apps/api/.env
+bash scripts/db-dump.sh -e apps/api/.env
 ```
 
 Output: `dumps/db/backup-2026-04-09_14-30-00.sql`

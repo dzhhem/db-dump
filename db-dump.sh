@@ -3,10 +3,18 @@
 #  db-dump.sh — PostgreSQL database dump
 #  Reads connection details from .env
 #  Usage: bash scripts/db-dump.sh
-#         bash scripts/db-dump.sh apps/api/.env
+#         bash scripts/db-dump.sh -e apps/api/.env
+#         bash scripts/db-dump.sh --env apps/api/.env
 # ================================================================
 
-ENV_FILE="${1:-.env}"
+ENV_FILE=".env"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -e|--env) ENV_FILE="$2"; shift 2 ;;
+    *) echo "❌  Unknown argument: $1" >&2; exit 1 ;;
+  esac
+done
 
 if [[ -f "$ENV_FILE" ]]; then
   export $(grep -v '^#' "$ENV_FILE" | xargs)
