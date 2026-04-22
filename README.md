@@ -11,7 +11,8 @@
 - **Organized Storage:** Saves all dumps to `dumps/db/` directory.
 - **Docker Support:** Automatically detects Docker environment and replaces `localhost` with the `postgres` service name.
 - **Prisma Compatibility:** Strips Prisma-specific query parameters (e.g. `?schema=public`) unsupported by `pg_dump`.
-- **Error Handling:** Exits with a non-zero code and removes the output file if `pg_dump` fails.
+- **Improved Portability:** Uses `--no-owner` and `--no-privileges` flags to ensure dumps can be easily restored by different users.
+- **Error Handling:** Removes the output file if `pg_dump` fails.
 - **Named Arguments:** Supports short (`-e`) and long (`--env`) flags.
 
 ## Usage
